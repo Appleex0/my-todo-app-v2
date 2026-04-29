@@ -1,7 +1,4 @@
-import { BiEdit, BiRename } from "react-icons/bi"
 import { FaRegEdit } from "react-icons/fa"
-import { FaDeleteLeft } from "react-icons/fa6"
-import { LuDelete } from "react-icons/lu"
 import { MdDelete } from "react-icons/md"
 
 function Todo() {
