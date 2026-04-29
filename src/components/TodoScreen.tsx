@@ -1,27 +1,36 @@
-import { useState, type ReactHTMLElement } from "react"
+import { useState } from "react"
 import TodoList from "./TodoList"
-import Warm from "./Warm"
+import LongError from "./LongError"
+import ShortError from "./ShortError"
 
 function TodoScreen() {
-    const [descriptionValue, setDescriptionValue] = useState<string>('')
-    const lenghtChecker = ()=>{
-        if(){
-
-        }
-    }
+    const [isMin, setIsMin] = useState<boolean>(false)
+    const [isMax, setIsMax] = useState<boolean>(false)
     return (
-        <div className="flex justify-center items-center flex-col w-full h-full ">
+        <div className="flex justify-center items-center flex-col w-full h-full relative">
+            {isMax && <LongError />}
+            {isMin && <ShortError />}
             <div className="flex flex-col justify-center items-center gap-8 border-2 px-8 py-4 bg-[#6FCF97] h-2/5 w-2/5">
                 <h1 className="text-2xl ">My Todo App V2</h1>
                 <div className="flex flex-col justify-center items-center w-full h-full gap-4">
                     <div className="flex flex-col w-full h-full">
                         <label htmlFor="Name">Name</label>
-                        <input id="Name" className="outline-none border px-1 rounded-lg w-2/3 transition-transform bg-amber-50 hover:scale-102" type="text" />
+                        <input minLength={5} maxLength={25} id="Name" className="outline-none border px-1 rounded-lg w-2/3 transition-transform bg-amber-50 hover:scale-102" type="text" />
                         <label htmlFor="Description">Description</label>
-                        <textarea className="bg-amber-50 outline-none border p-1 h-full" id="Description" onChange={(e: React.ChangeEvent<HTMLTextAreaElement>)=>{
-                            if(lenghtChecker(e.target.value)){
-                              setDescriptionValue(e.target.value)
+                        <textarea maxLength={501} minLength={20} className="outline-none border p-1 h-full transition-transform bg-amber-50 hover:scale-102" id="Description" onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                            if (e.target.value.length < 20) {
+                                setIsMin(true)
+                                setIsMax(false)
+                                return
                             }
+                            if (e.target.value.length > 500) {
+                                setIsMax(true)
+                                setIsMin(false)
+                                return
+                            }
+                            setIsMax(false)
+                            setIsMin(false)
+
                         }} type="text" />
                     </div>
 
