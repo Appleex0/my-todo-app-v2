@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import Todo from '../components/Todo'
 
 export interface Todo {
     id: string,
@@ -8,42 +9,28 @@ export interface Todo {
 }
 
 export interface TodoState {
-    list: Todo[];
+    list: Todo[]
 }
 
-const getInitialState = (): TodoState => {
-    const savedTodo = localStorage.getItem("todoData")
-    if (savedTodo) {
-        return { list: JSON.parse(savedTodo) }
+const todoInitialState = (): TodoState => {
+    const saved = localStorage.getItem("todoData")
+    if (saved) {
+        return JSON.parse(saved)
     }
     return { list: [] }
 }
-const initialState: TodoState = getInitialState()
+
 
 export const todoSlice = createSlice({
     name: "todo",
-    initialState,
+    initialState: todoInitialState,
     reducers: {
         createTodo: (state, action: PayloadAction<Todo>) => {
             state.list.push(action.payload)
             localStorage.setItem("todoData", JSON.stringify(state.list))
         },
-        updateTodo: (state, action: PayloadAction<Todo>) => {
-            const index = state.list.findIndex(item => item.id === action.payload.id)
-
-            if (index !== -1) {
-                state.list[index] = action.payload
-
-                localStorage.setItem("todoData", JSON.stringify(state.list))
-            }
-        },
-        deleteTodo: (state, action: PayloadAction<string>) => {
-            state.list.filter(todo => todo.id !== action.payload)
-
-            localStorage.setItem("todoData", JSON.stringify(state.list))
-        },
     }
 })
 
-export const { createTodo, updateTodo, deleteTodo } = todoSlice.actions
+export const { createTodo, deleteTodo } = todoSlice.actions
 export default todoSlice.reducer

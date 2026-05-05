@@ -1,8 +1,16 @@
 import { FaRegEdit } from "react-icons/fa"
 import { MdDelete } from "react-icons/md"
+import { useDispatch } from "react-redux"
+import { deleteTodo } from "../features/todoSlice"
 
 function Todo({ todo }: any) {
 
+    const dispatch = useDispatch()
+
+    const deleteT = () => {
+        dispatch(deleteTodo(todo.id))
+        console.log(todo.id)
+    }
     return (
         <div className="flex flex-col border p-4">
             <div className="flex flex-col gap-3">
@@ -12,7 +20,7 @@ function Todo({ todo }: any) {
                 </div>
             </div>
             <div className="flex gap-2 justify-end items-end">
-                <div className="text-2xl text-red-500 cursor-pointer"><MdDelete /></div>
+                <div onClick={deleteT} className="text-2xl text-red-500 cursor-pointer"><MdDelete /></div>
                 <div className="text-2xl text-cyan-600 cursor-pointer"><FaRegEdit /></div>
             </div>
         </div>
