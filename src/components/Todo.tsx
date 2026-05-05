@@ -1,25 +1,14 @@
 import { FaRegEdit } from "react-icons/fa"
 import { MdDelete } from "react-icons/md"
 
-type TodoData = {
-    name?: string
-    description?: string
-}
-
-type TodoProps = {
-    data?: TodoData
-}
-
-function Todo({ data }: TodoProps) {
-    const name = data?.name ?? "Untitled"
-    const description = data?.description ?? "No description provided."
+function Todo({ todo }: any) {
 
     return (
         <div className="flex flex-col border p-4">
             <div className="flex flex-col gap-3">
-                <div className="font-medium text-2xl">{name}</div>
+                <div className="font-medium text-2xl">{todo.name}</div>
                 <div>
-                    {description}
+                    {todo.description}
                 </div>
             </div>
             <div className="flex gap-2 justify-end items-end">

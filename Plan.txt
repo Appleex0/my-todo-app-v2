@@ -1,0 +1,45 @@
+Todo Layihəsi Plan
+
+--- Componentlər
+
+ -- LongError 
+  - Sadə 2
+
+ -- ShortError
+  - Sadə 2
+
+ -- Todo
+  - Üzərində İşləyirəm
+
+ -- TodoEditMode
+  - Üzərində İşləyirəm 
+
+ -- TodoList
+  - İşim hələlik bitdi  1
+
+ -- TodoScreen
+  - İşim hələlik bitdi  1
+
+
+
+--- Features
+
+ -- todoSlice
+  - İşim Bitdi  2
+  
+ -- languageSlice
+  - Boşdur 0
+
+ -- themeSlice
+  - Boşdur 0
+
+--- Tailwind
+
+ -- Theme
+  - Boşdur 0
+
+ -- Responsive
+  - Boşdur 0
+
+
+--- Digər

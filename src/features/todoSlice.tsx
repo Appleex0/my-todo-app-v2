@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface Todo {
-    id: number,
+    id: string,
     name: string,
     description: string
 }
@@ -37,7 +37,7 @@ export const todoSlice = createSlice({
                 localStorage.setItem("todoData", JSON.stringify(state.list))
             }
         },
-        deleteTodo: (state, action: PayloadAction<Number>) => {
+        deleteTodo: (state, action: PayloadAction<string>) => {
             state.list.filter(todo => todo.id !== action.payload)
 
             localStorage.setItem("todoData", JSON.stringify(state.list))

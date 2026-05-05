@@ -11,14 +11,18 @@ function TodoScreen() {
     const dispatch = useDispatch()
     const [name, setName] = useState<string>("")
     const [description, setDescription] = useState<string>("")
-    const addTodo = ()=>{
-        dispatch(createTodo({
-            id: new Date().getTime(),
+    const addTodo = () => {
+        if (name.length < 5 || name.length > 25 || description.length < 25 || description.length > 500) {
+            return
+        }
+        return dispatch(createTodo({
+            id: crypto.randomUUID(),
             name,
             description
-        }))
-        setName("")
-        setDescription("")
+        })), setName(""), setDescription("")
+
+
+
     }
     return (
         <div className="flex justify-center items-center flex-col w-full h-full relative">
@@ -29,11 +33,11 @@ function TodoScreen() {
                 <div className="flex flex-col justify-center items-center w-full h-full gap-4">
                     <div className="flex flex-col w-full h-full">
                         <label htmlFor="Name">Name</label>
-                        <input onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        <input value={name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                             setName(e.target.value)
                         }} minLength={5} maxLength={25} id="Name" className="outline-none border px-1 rounded-lg w-2/3 transition-transform bg-amber-50 hover:scale-102" type="text" />
                         <label htmlFor="Description">Description</label>
-                        <textarea maxLength={501} minLength={20} className="outline-none border p-1 h-full transition-transform bg-amber-50 hover:scale-102" id="Description" onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                        <textarea value={description} maxLength={501} minLength={20} className="outline-none border p-1 h-full transition-transform bg-amber-50 hover:scale-102" id="Description" onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                             setDescription(e.target.value)
                             if (e.target.value.length < 20) {
                                 setIsMin(true)
