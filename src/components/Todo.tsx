@@ -9,8 +9,8 @@ function Todo({ todo }: any) {
 
     const deleteT = () => {
         dispatch(deleteTodo(todo.id))
-        console.log(todo.id)
     }
+
     return (
         <div className="flex flex-col border p-4">
             <div className="flex flex-col gap-3">

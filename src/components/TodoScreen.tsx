@@ -4,6 +4,9 @@ import LongError from "./LongError"
 import ShortError from "./ShortError"
 import { useDispatch } from "react-redux"
 import { createTodo } from "../features/todoSlice"
+import { useSelector } from "react-redux"
+import type { RootState } from '../features/store';
+import TodoEditMode from "./TodoEditMode"
 
 function TodoScreen() {
     const [isMin, setIsMin] = useState<boolean>(false)
@@ -11,14 +14,16 @@ function TodoScreen() {
     const dispatch = useDispatch()
     const [name, setName] = useState<string>("")
     const [description, setDescription] = useState<string>("")
+    const isEditMode = useSelector((state: RootState) => state.addition.isEditMode)
+
     const addTodo = () => {
         if (name.length < 5 || name.length > 25 || description.length < 25 || description.length > 500) {
             return
         }
         return dispatch(createTodo({
             id: crypto.randomUUID(),
-            name,
-            description
+            name: name,
+            description: description
         })), setName(""), setDescription("")
 
 
@@ -28,6 +33,7 @@ function TodoScreen() {
         <div className="flex justify-center items-center flex-col w-full h-full relative">
             {isMax && <LongError />}
             {isMin && <ShortError />}
+            { isEditMode && <TodoEditMode/> }
             <div className="flex flex-col justify-center items-center gap-8 border-2 px-8 py-4 bg-[#6FCF97] h-2/5 w-2/5">
                 <h1 className="text-2xl ">My Todo App V2</h1>
                 <div className="flex flex-col justify-center items-center w-full h-full gap-4">
