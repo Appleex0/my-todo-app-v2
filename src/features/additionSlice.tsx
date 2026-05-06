@@ -9,7 +9,7 @@ export interface trueFalse {
 
 const initialState: trueFalse = {
     isDark: false,
-    isEditMode: true
+    isEditMode: false
 }
 
 
