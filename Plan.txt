@@ -2,30 +2,27 @@ Todo Layihəsi Plan
 
 --- Componentlər
 
- -- LongError 
-  - Sadə 2
-
- -- ShortError
-  - Sadə 2
+ -- ErrorMessage
+  - Bitdi 2
 
  -- Todo
-  - Üzərində İşləyirəm
+  - Bitdi 2
 
  -- TodoEditMode
-  - Üzərində İşləyirəm 
+  - Bitdi 2
 
  -- TodoList
-  - İşim hələlik bitdi  1
+  - Bitdi 2
 
  -- TodoScreen
-  - İşim hələlik bitdi  1
+  - Bitdi 2
 
 
 
 --- Features
 
  -- todoSlice
-  - İşim Bitdi  2
+  - Bitdi  2
   
  -- languageSlice
   - Boşdur 0

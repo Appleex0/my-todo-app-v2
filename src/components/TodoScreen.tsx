@@ -58,11 +58,11 @@ function TodoScreen() {
         />
       )}
       {isEditMode && <TodoEditMode />}
-      <div className="flex flex-col justify-center items-center gap-8 border-2 px-8 py-4 bg-[#6FCF97] h-2/5 w-2/5">
-        <h1 className="text-2xl ">My Todo App V2</h1>
+      <div className="flex flex-col justify-center items-center gap-8 border-2 px-8 py-4 bg-[#716FA5] h-2/5 w-2/5">
+        <h1 className="text-2xl text-[#FAFAFA]">My Todo App V2</h1>
         <div className="flex flex-col justify-center items-center w-full h-full gap-4">
           <div className="flex flex-col w-full h-full">
-            <label htmlFor="Name">Name</label>
+            <label className="text-[#FAFAFA]" htmlFor="Name">Name</label>
             <input
               value={name}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,15 +83,15 @@ function TodoScreen() {
               minLength={5}
               maxLength={25}
               id="Name"
-              className="outline-none border px-1 rounded-lg w-2/3 transition-transform bg-amber-50 hover:scale-102"
+              className="outline-none border px-1 rounded-lg w-2/3 transition-transform  bg-amber-50 hover:scale-102"
               type="text"
             />
-            <label htmlFor="Description">Description</label>
+            <label className="text-[#FAFAFA]" htmlFor="Description">Description</label>
             <textarea
               value={description}
               maxLength={501}
               minLength={20}
-              className="outline-none border p-1 h-full transition-transform bg-amber-50 hover:scale-102"
+              className= " outline-none border p-1 h-full transition-transform bg-amber-50 hover:scale-102"
               id="Description"
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                 const value = e.target.value;
@@ -114,7 +114,7 @@ function TodoScreen() {
 
           <button
             onClick={addTodo}
-            className="border rounded-2xl px-2 py-1 cursor-pointer bg-[#2FA084] transition-colors text-amber-50 border-none hover:bg-[#9AD872]"
+            className="border rounded-2xl px-2 py-1 cursor-pointer bg-[#37355F] transition-colors text-amber-50 border-none hover:bg-[#2A284A]"
           >
             Add Todo
           </button>
