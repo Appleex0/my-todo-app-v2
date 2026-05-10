@@ -36,7 +36,7 @@ Todo Layihəsi Plan
   - Boşdur 0
 
  -- Responsive
-  - Boşdur 0
+  - Bitdi 2
 
 
 --- Digər

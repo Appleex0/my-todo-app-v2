@@ -51,12 +51,12 @@ function TodoEditMode() {
       {isMaxDesc && (
         <ErrorTemplate
           details={"Detayları"}
-          detailsNumber={"500"}
+          detailsNumber={"300"}
           howMuch={"Çox"}
         />
       )}
       <div className=" border bg-green-300 w-2/7 h-1/3">
-        <div className="flex gap-3   p-4 h-9/10 w-full">
+        <div className="flex gap-3 p-4 h-9/10 w-full">
           <div className="flex flex-col p-1 gap-10">
             <label className="" htmlFor="Name">
               Name
@@ -74,9 +74,13 @@ function TodoEditMode() {
                 if (value.length < 5) {
                   setIsMaxInput(false);
                   setIsMinInput(true);
+                  console.log(value.length)
                 } else if (value.length >= 25) {
                   setIsMaxInput(true);
                   setIsMinInput(false);
+                } else if(value.length == 0){
+                  setIsMinInput(false);
+                  setIsMaxInput(false);
                 } else {
                   setIsMinInput(false);
                   setIsMaxInput(false);
@@ -89,16 +93,19 @@ function TodoEditMode() {
               type="text"
             />
             <textarea
-              maxLength={501}
+              maxLength={301}
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                 const value = e.target.value;
                 setDescription(value);
-                if (value.length < 20) {
+                if (value.length < 20 && value.length > 0) {
                   setIsMaxDesc(false);
                   setIsMinDesc(true);
-                } else if (value.length >= 501) {
+                } else if (value.length >= 301) {
                   setIsMaxDesc(true);
                   setIsMinDesc(false);
+                } else if(value.length == 0){
+                  setIsMinDesc(false);
+                  setIsMaxDesc(false);
                 } else {
                   setIsMinDesc(false);
                   setIsMaxDesc(false);

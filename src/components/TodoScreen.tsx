@@ -20,7 +20,7 @@ function TodoScreen() {
   );
 
   const addTodo = () => {
-    if (isMinInput || isMaxInput || isMinDesc || isMaxDesc) {
+    if (isMinInput || isMaxInput || isMinDesc || isMaxDesc || name.length === 0 || description.length === 0) {
       return;
     }
     return (
@@ -53,12 +53,12 @@ function TodoScreen() {
       {isMaxDesc && (
         <ErrorTemplate
           details={"Detayları"}
-          detailsNumber={"500"}
+          detailsNumber={"300"}
           howMuch={"Çox"}
         />
       )}
       {isEditMode && <TodoEditMode />}
-      <div className="flex flex-col justify-center items-center gap-8 border-2 px-8 py-4 bg-[#716FA5] h-2/5 w-2/5">
+      <div className="flex flex-col justify-center items-center gap-8 border-2 px-8 py-4 h-3/7 w-4/5 bg-[#716FA5] sm:h-2/5 lg:h-2/5 lg:w-1/2 md:w-1/2 xl:w-2/5 rounded-lg">
         <h1 className="text-2xl text-[#FAFAFA]">My Todo App V2</h1>
         <div className="flex flex-col justify-center items-center w-full h-full gap-4">
           <div className="flex flex-col w-full h-full">
@@ -68,12 +68,16 @@ function TodoScreen() {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 const value = e.target.value;
                 setName(value);
-                if (value.length < 5) {
+                if (value.length < 5 && value.length > 0) {
                   setIsMaxInput(false);
                   setIsMinInput(true);
+                  console.log(value.length)
                 } else if (value.length >= 25) {
                   setIsMaxInput(true);
                   setIsMinInput(false);
+                } else if(value.length == 0){
+                  setIsMinInput(false);
+                  setIsMaxInput(false);
                 } else {
                   setIsMinInput(false);
                   setIsMaxInput(false);
@@ -89,19 +93,22 @@ function TodoScreen() {
             <label className="text-[#FAFAFA]" htmlFor="Description">Description</label>
             <textarea
               value={description}
-              maxLength={501}
+              maxLength={301}
               minLength={20}
               className= " outline-none border p-1 h-full transition-transform bg-amber-50 hover:scale-102"
               id="Description"
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                 const value = e.target.value;
                 setDescription(value);
-                if (value.length < 20) {
+                if (value.length < 20 && value.length > 0) {
                   setIsMaxDesc(false);
                   setIsMinDesc(true);
-                } else if (value.length >= 501) {
+                } else if (value.length >= 301) {
                   setIsMaxDesc(true);
                   setIsMinDesc(false);
+                } else if(value.length == 0){
+                  setIsMinDesc(false);
+                  setIsMaxDesc(false);
                 } else {
                   setIsMinDesc(false);
                   setIsMaxDesc(false);
