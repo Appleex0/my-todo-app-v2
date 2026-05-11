@@ -1,15 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-
-export interface Todo {
-    id: string,
-    name: string,
-    description: string
-}
-
-export interface TodoState {
-    list: Todo[]
-}
+import type { TodoType, TodoState } from './Types/todoType'
 
 const todoInitialState = (): TodoState => {
     const saved = localStorage.getItem("todoData")
@@ -24,7 +15,7 @@ export const todoSlice = createSlice({
     name: "todo",
     initialState: todoInitialState(),
     reducers: {
-        createTodo: (state, action: PayloadAction<Todo>) => {
+        createTodo: (state, action: PayloadAction<TodoType>) => {
             state.list.push(action.payload)
             localStorage.setItem("todoData", JSON.stringify(state.list))
         },
@@ -34,7 +25,7 @@ export const todoSlice = createSlice({
 
             localStorage.setItem("todoData", JSON.stringify(state.list))
         },
-        updateTodo: (state, action: PayloadAction<Todo>) => {
+        updateTodo: (state, action: PayloadAction<TodoType>) => {
             const index = state.list.findIndex((todo) => todo.id === action.payload.id)
             if (index != -1) {
                 state.list[index] = action.payload

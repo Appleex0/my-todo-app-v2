@@ -1,13 +1,13 @@
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteTodo, type Todo, type TodoState } from "../features/todoSlice";
+import { useDispatch } from "react-redux";
+import { deleteTodo} from "../features/todoSlice";
 import { editMode } from "../features/additionSlice";
 import { savedEditTodo } from "../features/editTodoSlice";
+import type { TodoType } from "../features/Types/todoType";
 
-function Todo({ todo }: any) {
+function Todo({ todo }: TodoType) {
   const dispatch = useDispatch();
-
   const edit = () => {
     dispatch(editMode(true));
     dispatch(
