@@ -6,6 +6,9 @@ import { useSelector } from "react-redux";
 import type { RootState } from "../features/store";
 import TodoEditMode from "./TodoEditMode";
 import ErrorTemplate from "./Error/ErrorTemplate";
+import { MdModeNight } from "react-icons/md";
+import { FaRegSun } from "react-icons/fa";
+import { changeTheme } from "../features/additionSlice";
 
 function TodoScreen() {
   const [isMinInput, setIsMinInput] = useState<boolean>(false);
@@ -19,6 +22,11 @@ function TodoScreen() {
     (state: RootState) => state.addition.isEditMode,
   );
 
+  const isDark = useSelector((state: RootState) => state.addition.isDark)
+  const change = () => {
+    dispatch(changeTheme())
+    console.log(isDark)
+  }
   const addTodo = () => {
     if (isMinInput || isMaxInput || isMinDesc || isMaxDesc || name.length === 0 || description.length === 0) {
       return;
@@ -37,6 +45,18 @@ function TodoScreen() {
   };
   return (
     <div className="flex justify-center items-center flex-col w-full h-full relative">
+      <div onClick={() => {
+        change()
+      }} className="absolute right-15 top-5 text-2xl text-gray-700 hover:scale-120 transition-all cursor-pointer duration-500">
+        <MdModeNight
+          className={`absolute transition-all duration-500 transform ${isDark ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-0"
+            }`}
+        />
+        <FaRegSun
+          className={`absolute transition-all duration-500 transform ${!isDark ? "opacity-100 rotate-0 scale-100" : "opacity-0 rotate-90 scale-0"
+            }`}
+        />
+      </div>
       {isMinInput && (
         <ErrorTemplate details={"Adı"} detailsNumber={"5"} howMuch={"Az"} />
       )}
@@ -75,7 +95,7 @@ function TodoScreen() {
                 } else if (value.length >= 25) {
                   setIsMaxInput(true);
                   setIsMinInput(false);
-                } else if(value.length == 0){
+                } else if (value.length == 0) {
                   setIsMinInput(false);
                   setIsMaxInput(false);
                 } else {
@@ -95,7 +115,7 @@ function TodoScreen() {
               value={description}
               maxLength={301}
               minLength={20}
-              className= " outline-none border p-1 h-full transition-transform bg-amber-50 hover:scale-102"
+              className=" outline-none border p-1 h-full transition-transform bg-amber-50 hover:scale-102"
               id="Description"
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                 const value = e.target.value;
@@ -106,7 +126,7 @@ function TodoScreen() {
                 } else if (value.length >= 301) {
                   setIsMaxDesc(true);
                   setIsMinDesc(false);
-                } else if(value.length == 0){
+                } else if (value.length == 0) {
                   setIsMinDesc(false);
                   setIsMaxDesc(false);
                 } else {
