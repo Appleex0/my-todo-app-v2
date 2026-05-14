@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://appleex0.github.io/my-todo-app-v2",
-  
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -12,6 +11,7 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
+    
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
