@@ -135,7 +135,6 @@ function TodoScreen() {
                   setDescription(e.target.value);
                 }
               }}
-              type="text"
             />
           </div>
 

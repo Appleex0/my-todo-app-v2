@@ -6,7 +6,7 @@ import { editMode } from "../features/additionSlice";
 import { savedEditTodo } from "../features/editTodoSlice";
 import type { TodoType } from "../features/Types/todoType";
 
-function Todo({ todo }: TodoType) {
+function Todo({ todo }: { todo: TodoType }) {
   const dispatch = useDispatch();
   const edit = () => {
     dispatch(editMode(true));

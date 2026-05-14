@@ -13,7 +13,7 @@ export const editTodoSlice = createSlice({
     name: "editTodo",
     initialState,
     reducers: {
-        savedEditTodo: (state, action: PayloadAction<Todo>) => {
+        savedEditTodo: (state, action: PayloadAction<TodoType>) => {
             state.id = action.payload.id
             state.name = action.payload.name
             state.description = action.payload.description
