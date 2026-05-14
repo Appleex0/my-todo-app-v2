@@ -47,7 +47,7 @@ function TodoScreen() {
     <div className="flex justify-center items-center flex-col w-full h-full relative">
       <div onClick={() => {
         change()
-      }} className="absolute right-15 top-5 text-2xl text-gray-700 hover:scale-120 transition-all cursor-pointer duration-500">
+      }} className="absolute  top-13 right-20 xl:right-15 lg:top-5 lg:right-15 md:top-5 md:right-15  text-2xl text-gray-700 hover:scale-120 transition-all cursor-pointer duration-500">
         <MdModeNight
           className={`absolute transition-all duration-500 transform ${isDark ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-0"
             }`}

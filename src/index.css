@@ -5,9 +5,123 @@
 }
 
 @layer base {
+  :root {
+    --bg: #f8fafc;
+    --surface: #eef2ff;
+    --panel: #c7d2fe;
+    --panel-strong: #8b5cf6;
+    --text: #0f172a;
+    --text-muted: #475569;
+    --text-on-panel: #1e293b;
+    --accent: #6366f1;
+    --accent-strong: #4338ca;
+    --hover-accent: #4f46e5;
+    --input-bg: #ffffff;
+    --danger: #dc2626;
+    --danger-strong: #991b1b;
+    --success: #16a34a;
+  }
+
+  .dark {
+    --bg: #0b1220;
+    --surface: #111827;
+    --panel: #4338ca;
+    --panel-strong: #23258f;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --text-on-panel: #f8fafc;
+    --accent: #8b5cf6;
+    --accent-strong: #7c3aed;
+    --hover-accent: #5b21b6;
+    --input-bg: #1e293b;
+    --danger: #f87171;
+    --danger-strong: #b91c1c;
+    --success: #4ade80;
+  }
+
+  html, body {
+    background-color: var(--bg);
+    color: var(--text);
+  }
+
   *, ::after, ::before {
     transition-property: background-color, border-color, color, fill, stroke;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 500ms; 
+    transition-duration: 500ms;
+  }
+
+  [class~="bg-[#FAFAFA]"] {
+    background-color: var(--bg) !important;
+  }
+
+  .dark [class~="bg-[#2e0053]"] {
+    background-color: var(--bg) !important;
+  }
+
+  [class~="bg-[#716FA5]"] {
+    background-color: var(--panel) !important;
+  }
+
+  [class~="dark:bg-[#716FA5]"] {
+    background-color: var(--surface) !important;
+    border-color: rgba(148, 163, 184, 0.65) !important;
+  }
+
+  .dark [class~="dark:bg-[#716FA5]"] {
+    background-color: var(--panel-strong) !important;
+    border-color: rgba(139, 92, 246, 0.75) !important;
+  }
+
+  [class~="text-[#FAFAFA]"] {
+    color: var(--text-on-panel) !important;
+  }
+
+  [class~="text-[#090911]"] {
+    color: var(--text) !important;
+  }
+
+  [class~="bg-[#37355F]"] {
+    background-color: var(--accent) !important;
+  }
+
+  [class~="hover:bg-[#2A284A]"]:hover {
+    background-color: var(--hover-accent) !important;
+  }
+
+  [class~="bg-green-300"] {
+    background-color: var(--panel) !important;
+  }
+
+  [class~="bg-amber-50"] {
+    background-color: var(--input-bg) !important;
+  }
+
+  .dark [class~="bg-amber-50"] {
+    background-color: var(--surface) !important;
+  }
+
+  .text-red-500,
+  .text-red-700,
+  .hover\:text-red-400:hover {
+    color: var(--danger) !important;
+  }
+
+  .text-cyan-600,
+  .text-blue-400,
+  .text-blue-600,
+  .hover\:text-blue-400:hover {
+    color: var(--accent) !important;
+  }
+
+  .text-gray-700 {
+    color: var(--text-muted) !important;
+  }
+
+  .bg-red-800 {
+    background-color: var(--danger-strong) !important;
+  }
+
+  .text-amber-50 {
+    color: var(--text-on-panel) !important;
   }
 }

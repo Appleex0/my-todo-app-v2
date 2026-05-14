@@ -24,7 +24,7 @@ function Todo({ todo }: TodoType) {
   };
 
   return (
-    <div className="flex flex-col border p-4 text-[#090911] w-full">
+    <div className="flex flex-col dark:bg-[#716FA5] border p-4 text-[#090911] w-full">
       <div className="flex flex-col gap-3">
         <div className="font-medium text-2xl  text-[#090911]">{todo.name}</div>
         <div className=" text-[#090911]  break-words md:w-72 md:h-55 sm:w-58 lg:w-64 lg:h-64 xl:w-60 xl:h-70 2xl:w-96 2xl:h-80">
