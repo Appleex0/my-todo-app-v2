@@ -17,6 +17,7 @@ function TodoEditMode() {
   const [description, setDescription] = useState<string>(todo.description);
   const hasError = isMinInput || isMaxInput || isMinDesc || isMaxDesc;
   const dispatch = useDispatch();
+  
   const cancel = () => {
     dispatch(editMode(false));
   };
@@ -30,11 +31,11 @@ function TodoEditMode() {
         description,
       }),
     );
-
     dispatch(editMode(false));
   };
+
   return (
-    <div className="flex absolute h-full w-full justify-center items-center backdrop-blur-sm ">
+    <div className="fixed inset-0 z-50 flex justify-center items-center backdrop-blur-md bg-slate-900/40 dark:bg-black/60 p-4 transition-all duration-300 animate-fade-in">
       {isMinInput && (
         <ErrorTemplate details={"Adı"} detailsNumber={"5"} howMuch={"Az"} />
       )}
@@ -55,45 +56,52 @@ function TodoEditMode() {
           howMuch={"Çox"}
         />
       )}
-      <div className=" border bg-green-300 w-2/7 h-1/3">
-        <div className="flex gap-3 p-4 h-9/10 w-full">
-          <div className="flex flex-col p-1 gap-10">
-            <label className="" htmlFor="Name">
+
+      <div className="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl shadow-2xl border border-slate-200/60 dark:border-slate-800 p-6 flex flex-col gap-5 transition-all transform scale-100">
+        
+        <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 tracking-wide border-b border-slate-100 dark:border-slate-800 pb-2">
+          Todo Redaktə Et
+        </h2>
+
+        <div className="flex flex-col gap-4">
+          
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400" htmlFor="Name">
               Name
             </label>
-            <label className="" htmlFor="Description">
-              Description
-            </label>
-          </div>
-          <div className="flex flex-col p-1 gap-5 w-full h-full">
             <input
               maxLength={25}
+              id="Name"
+              type="text"
+              value={name}
+              className="w-full outline-none border border-slate-200 dark:border-slate-700 px-3 py-2 rounded-xl dark:focus:bg-slate-800 transition-all duration-200 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:bg-white dark:focus:bg-slate-850 focus:border-indigo-500 dark:focus:border-amber-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-amber-500/10"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 const value = e.target.value;
                 setName(value);
                 if (value.length < 5) {
                   setIsMaxInput(false);
                   setIsMinInput(true);
-                  console.log(value.length)
                 } else if (value.length >= 25) {
                   setIsMaxInput(true);
                   setIsMinInput(false);
-                } else if(value.length == 0){
-                  setIsMinInput(false);
-                  setIsMaxInput(false);
                 } else {
                   setIsMinInput(false);
                   setIsMaxInput(false);
-                  setName(e.target.value);
                 }
               }}
-              value={name}
-              className="outline-none border px-1 rounded-lg w-full transition-transform bg-amber-50 hover:scale-102"
-              id="Name"
-              type="text"
             />
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400" htmlFor="Description">
+              Description
+            </label>
             <textarea
               maxLength={301}
+              id="Description"
+              rows={4}
+              value={description}
+              className="w-full outline-none border dark:focus:bg-slate-800 border-slate-200 dark:border-slate-700 p-3 rounded-xl transition-all duration-200 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:bg-white dark:focus:bg-slate-850 focus:border-indigo-500 dark:focus:border-amber-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-amber-500/10 resize-none"
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                 const value = e.target.value;
                 setDescription(value);
@@ -103,41 +111,38 @@ function TodoEditMode() {
                 } else if (value.length >= 301) {
                   setIsMaxDesc(true);
                   setIsMinDesc(false);
-                } else if(value.length == 0){
-                  setIsMinDesc(false);
-                  setIsMaxDesc(false);
                 } else {
                   setIsMinDesc(false);
                   setIsMaxDesc(false);
-                  setDescription(e.target.value);
                 }
               }}
-              value={description}
-              id="Description"
-              className="w-full h-full outline-none border p-1transition-transform bg-amber-50 hover:scale-102 resize-none"
             ></textarea>
           </div>
         </div>
-        <div className="flex justify-end gap-5 pr-2">
-          <div
-            onClick={() => {
-              save();
-            }}
-            className={
-              hasError
-                ? "text-xl font-black text-blue-400 cursor-no-drop "
-                : "text-xl font-black text-blue-600 cursor-pointer hover:text-blue-400"
-            }
-          >
-            Save
-          </div>
-          <div
+
+        <div className="flex justify-end items-center gap-3 mt-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+          <button
             onClick={cancel}
-            className="text-xl font-bold text-red-700 cursor-pointer hover:text-red-400"
+            type="button"
+            className="px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-150 cursor-pointer"
           >
             Cancel
-          </div>
+          </button>
+          
+          <button
+            onClick={save}
+            disabled={hasError}
+            type="button"
+            className={`px-5 py-2 rounded-xl text-sm font-bold shadow-sm transition-all duration-200 ${
+              hasError
+                ? "bg-indigo-300 dark:bg-slate-800 text-indigo-100 dark:text-slate-600 cursor-not-allowed shadow-none"
+                : "bg-indigo-600 hover:bg-indigo-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white dark:text-slate-950 active:scale-97 cursor-pointer"
+            }`}
+          >
+            Save
+          </button>
         </div>
+
       </div>
     </div>
   );

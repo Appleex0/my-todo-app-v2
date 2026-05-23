@@ -1,12 +1,11 @@
 import TodoScreen from "./components/TodoScreen"
 
 function App() {
-
   return (
     <>
-    <div className="w-screen h-screen flex justify-center items-center  bg-[#FAFAFA]  dark:bg-[#2e0053] overflow-x-hidden">
-      <TodoScreen/>
-    </div>
+      <div className="min-h-screen w-full flex justify-center items-center bg-gray-50 dark:bg-gray-800 antialiased selection:bg-indigo-500 selection:text-white">
+        <TodoScreen/>
+      </div>
     </>
   )
 }
