@@ -37,30 +37,30 @@ function TodoEditMode() {
   return (
     <div className="fixed inset-0 z-50 flex justify-center items-center backdrop-blur-md bg-slate-900/40 dark:bg-black/60 p-4 transition-all duration-300 animate-fade-in">
       {isMinInput && (
-        <ErrorTemplate details={"Adı"} detailsNumber={"5"} howMuch={"Az"} />
+        <ErrorTemplate details={"The name"} detailsNumber={"5"} howMuch={"less"} />
       )}
       {isMaxInput && (
-        <ErrorTemplate details={"Adı"} detailsNumber={"20"} howMuch={"Çox"} />
+        <ErrorTemplate details={"The name"} detailsNumber={"20"} howMuch={"more"} />
       )}
       {isMinDesc && (
         <ErrorTemplate
-          details={"Detayları"}
+          details={"Details"}
           detailsNumber={"20"}
-          howMuch={"Az"}
+          howMuch={"less"}
         />
       )}
       {isMaxDesc && (
         <ErrorTemplate
-          details={"Detayları"}
+          details={"Details"}
           detailsNumber={"300"}
-          howMuch={"Çox"}
+          howMuch={"more"}
         />
       )}
 
       <div className="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl shadow-2xl border border-slate-200/60 dark:border-slate-800 p-6 flex flex-col gap-5 transition-all transform scale-100">
         
         <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 tracking-wide border-b border-slate-100 dark:border-slate-800 pb-2">
-          Todo Redaktə Et
+          Edit Todo
         </h2>
 
         <div className="flex flex-col gap-4">

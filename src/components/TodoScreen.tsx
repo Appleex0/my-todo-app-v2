@@ -57,23 +57,23 @@ function TodoScreen() {
   return (
     <div className="flex justify-center items-center flex-col w-full min-h-screen relative p-4 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
       {isMinInput && (
-        <ErrorTemplate details={"Adı"} detailsNumber={"5"} howMuch={"Az"} />
+        <ErrorTemplate details={"The name"} detailsNumber={"5"} howMuch={"less"} />
       )}
       {isMaxInput && (
-        <ErrorTemplate details={"Adı"} detailsNumber={"20"} howMuch={"Çox"} />
+        <ErrorTemplate details={"The name"} detailsNumber={"20"} howMuch={"more"} />
       )}
       {isMinDesc && (
         <ErrorTemplate
-          details={"Detayları"}
+          details={"Details"}
           detailsNumber={"20"}
-          howMuch={"Az"}
+          howMuch={"less"}
         />
       )}
       {isMaxDesc && (
         <ErrorTemplate
-          details={"Detayları"}
+          details={"Details"}
           detailsNumber={"300"}
-          howMuch={"Çox"}
+          howMuch={"more"}
         />
       )}
       {isEditMode && <TodoEditMode />}

@@ -19,7 +19,7 @@ function TodoList() {
             ) : (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
                     <p className="text-gray-500 dark:text-slate-400 font-medium tracking-wide">
-                        Hələ ki heç bir todo yoxdur. Yeni birini əlavə edin!
+                        There are no todos yet. Add a new one!
                     </p>
                 </div>
             )}

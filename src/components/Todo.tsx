@@ -25,12 +25,12 @@ function Todo({ todo }: { todo: TodoType }) {
   };
 
   return (
-    <div className="flex flex-col justify-between p-5 bg-gradient-to-br from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 border-l-4 border-l-indigo-500 dark:border-l-amber-500 border-y border-r border-slate-200/80 dark:border-slate-700/60 rounded-r-2xl rounded-l-md shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_-10px_rgba(0,0,0,0.5)] hover:shadow-[0_10px_25px_-5px_rgba(99,102,241,0.15)] dark:hover:shadow-[0_10px_30px_-5px_rgba(245,158,11,0.15)] hover:-translate-y-1 transition-all duration-300 w-full min-h-[220px] group">
+    <div className="flex flex-col justify-between p-5 bg-linear-to-br from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 border-l-4 border-l-indigo-500 dark:border-l-amber-500 border-y border-r border-slate-200/80 dark:border-slate-700/60 rounded-r-2xl rounded-l-md shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_-10px_rgba(0,0,0,0.5)] hover:shadow-[0_10px_25px_-5px_rgba(99,102,241,0.15)] dark:hover:shadow-[0_10px_30px_-5px_rgba(245,158,11,0.15)] hover:-translate-y-1 transition-all duration-300 w-full min-h-55 group">
       <div className="flex flex-col gap-2.5">
-        <h3 className="font-bold text-lg text-slate-800 dark:text-slate-50 tracking-wide break-words group-hover:text-indigo-600 dark:group-hover:text-amber-400 transition-colors duration-200">
+        <h3 className="font-bold text-lg text-slate-800 dark:text-slate-50 tracking-wide wrap-break-words group-hover:text-indigo-600 dark:group-hover:text-amber-400 transition-colors duration-200">
           {todo.name}
         </h3>
-        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed break-words overflow-y-auto max-h-[120px] pr-1 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-700">
+        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed wrap-break-words overflow-y-auto max-h-30 pr-1 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-700">
           {todo.description}
         </p>
       </div>

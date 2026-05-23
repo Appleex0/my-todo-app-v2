@@ -6,7 +6,7 @@ function ErrorTemplate({ details, detailsNumber, howMuch }: {details:string, det
       <div className="flex items-center gap-2 text-sm font-semibold tracking-wide">
         <MdErrorOutline className="text-xl shrink-0 text-red-600 dark:text-red-400" />
         <span>
-          {details} {detailsNumber} simvoldan {howMuch.toLowerCase()} ola bilməz!
+          {details} cannot be {howMuch} than {detailsNumber} characters.
         </span>
       </div>
     </div>
